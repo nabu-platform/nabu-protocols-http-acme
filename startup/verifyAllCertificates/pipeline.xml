@@ -1,0 +1,6 @@
+<structure name="pipeline">
+    <structure name="input"/>
+    <structure name="output"/>
+    <structure definition="nabu.utils.types.NodeDescription" maxOccurs="unbounded" minOccurs="0" name="nodes"/>
+    <field name="isDevelopment" type="java.lang.Boolean"/>
+</structure>

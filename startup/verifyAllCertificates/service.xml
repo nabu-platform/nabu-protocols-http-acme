@@ -1,0 +1,291 @@
+<sequence xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		disabled="false"
+		id="944d9024-2ab7-44b4-8f27-d19427f88770">
+	<steps xsi:type="be.nabu.libs.services.vm.step.Map"
+			disabled="false"
+			comment="Check if development"
+			id="493cff6f-8687-4eed-8e3b-a8f5ae0c8d42">
+		<steps xsi:type="be.nabu.libs.services.vm.step.Invoke"
+				disabled="false"
+				id="4b04e4f4-a531-4dad-af8a-da40477b684f"
+				serviceId="nabu.utils.Server.property"
+				resultName="result3002ef5da55c47efa08e24065524a1db"
+				temporaryMapping="true"
+				x="18"
+				y="116"
+				invocationOrder="0"
+				asynchronous="false">
+			<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+					disabled="false"
+					id="b21c50b6-3003-4e51-afb4-1b57432e493a"
+					mask="false"
+					optional="false"
+					fixedValue="true">
+				<from>development</from>
+				<to>key</to>
+			</steps>
+		</steps>
+		<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+				disabled="false"
+				id="70df374e-6d26-432f-8177-1b1519f21721"
+				mask="false"
+				optional="false"
+				fixedValue="false">
+			<from>result3002ef5da55c47efa08e24065524a1db/value</from>
+			<to>isDevelopment</to>
+		</steps>
+	</steps>
+	<steps xsi:type="be.nabu.libs.services.vm.step.For"
+			disabled="false"
+			id="f6e5634e-e3ac-49a2-93ba-21cfc86db40b">
+		<steps xsi:type="be.nabu.libs.services.vm.step.Map"
+				disabled="false"
+				comment="Get all acme artifacts"
+				id="e3766b6c-9f35-437e-b080-13333e22eb9e">
+			<steps xsi:type="be.nabu.libs.services.vm.step.Invoke"
+					disabled="false"
+					id="fab56925-6f21-4e4c-9e4c-057992a36cf0"
+					serviceId="nabu.utils.reflection.Node.listByType"
+					resultName="resultfff7424d503c4ea7aea7acc387603ba5"
+					temporaryMapping="true"
+					x="104"
+					y="90"
+					invocationOrder="0"
+					asynchronous="false">
+				<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+						disabled="false"
+						id="2996e50b-d1ef-40f5-9e43-277534771563"
+						mask="false"
+						optional="false"
+						fixedValue="true">
+					<from>be.nabu.eai.module.http.acme.AcmeArtifact</from>
+					<to>type</to>
+				</steps>
+			</steps>
+			<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+					disabled="false"
+					id="2eb2c03e-7129-4dd8-86fb-4885464300bc"
+					mask="false"
+					optional="false"
+					fixedValue="false">
+				<from>resultfff7424d503c4ea7aea7acc387603ba5/nodes</from>
+				<to>nodes</to>
+			</steps>
+		</steps>
+		<steps xsi:type="be.nabu.libs.services.vm.step.Map"
+				disabled="false"
+				id="a60ab98a-d064-42ed-9428-93a4c3e84d4a">
+			<steps xsi:type="be.nabu.libs.services.vm.step.Invoke"
+					disabled="false"
+					id="5ead9e12-f685-446e-86d5-09a0861ed43b"
+					serviceId="nabu.utils.Server.log"
+					resultName="result2bf04d78ab8e40d3add2af5192636115"
+					temporaryMapping="true"
+					x="21"
+					y="92"
+					invocationOrder="0"
+					asynchronous="false">
+				<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+						disabled="false"
+						id="df5a5ff4-bbff-435b-baa8-1692b204e77a"
+						mask="false"
+						optional="false"
+						fixedValue="true">
+					<from>Verifying all certificates...</from>
+					<to>message</to>
+				</steps>
+				<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+						disabled="false"
+						id="d3c9c786-50e4-4f56-9108-1b0de87aac66"
+						mask="false"
+						optional="false"
+						fixedValue="true">
+					<from>DEBUG</from>
+					<to>level</to>
+				</steps>
+			</steps>
+		</steps>
+		<steps xsi:type="be.nabu.libs.services.vm.step.For"
+				disabled="false"
+				id="5839215e-825d-491f-9636-491a3e2eac06"
+				variable="node">
+			<steps xsi:type="be.nabu.libs.services.vm.step.Sequence"
+					disabled="false"
+					comment="Try to verify the certificate"
+					id="ad293dda-a341-4eef-8313-455bb76c6bae">
+				<steps xsi:type="be.nabu.libs.services.vm.step.Map"
+						disabled="false"
+						id="ceb10e11-1d44-45e6-8552-fb27f0e175e5">
+					<steps xsi:type="be.nabu.libs.services.vm.step.Invoke"
+							disabled="false"
+							id="16d6586f-65a3-4d5e-beba-00ef81d50ec7"
+							serviceId="nabu.protocols.http.acme.Services.verifyCertificate"
+							resultName="result916c2aaffc4f4467b9f34812204bc986"
+							temporaryMapping="true"
+							x="276"
+							y="91"
+							invocationOrder="0"
+							asynchronous="false">
+						<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+								disabled="false"
+								id="87b1373d-1eb3-47c8-a5c8-5dab3f5dfd11"
+								mask="false"
+								optional="false"
+								fixedValue="false">
+							<from>node/id</from>
+							<to>acmeId</to>
+						</steps>
+						<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+								disabled="false"
+								id="4f9e30b9-0fdd-4f9d-ac67-c961ab38f310"
+								mask="false"
+								optional="false"
+								fixedValue="false">
+							<from>isDevelopment</from>
+							<to>staging</to>
+						</steps>
+					</steps>
+				</steps>
+				<steps xsi:type="be.nabu.libs.services.vm.step.Catch"
+						disabled="false"
+						id="fe3c3a6a-c135-44b6-be52-23ae7975c4f1"
+						variable="exception">
+					<steps xsi:type="be.nabu.libs.services.vm.step.Sequence"
+							disabled="false"
+							id="7d017352-aea0-4018-a3f2-51c2cf1ca37c">
+						<steps xsi:type="be.nabu.libs.services.vm.step.Map"
+								disabled="false"
+								comment="Send out notification"
+								id="b4559523-a335-4aae-a7d3-806361178f9c">
+							<steps xsi:type="be.nabu.libs.services.vm.step.Invoke"
+									disabled="false"
+									id="cfed217d-5a31-471e-bc38-7cf435ea878b"
+									serviceId="nabu.frameworks.notifier.Services.notify"
+									resultName="result3454bd8640bd4c2c9aace1b6d1146064"
+									temporaryMapping="true"
+									x="268"
+									y="185"
+									invocationOrder="1"
+									asynchronous="false">
+								<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+										disabled="false"
+										id="7dc01d76-0f90-4c08-b7c7-31f93df609bf"
+										mask="false"
+										optional="false"
+										fixedValue="false">
+									<from>result0b18a9cd1f714e949622f65e9a1c09ec/summary</from>
+									<to>properties</to>
+								</steps>
+								<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+										disabled="false"
+										id="28f781b0-c939-4698-976e-37eec41d6d0a"
+										mask="false"
+										optional="false"
+										fixedValue="true">
+									<from>ERROR</from>
+									<to>severity</to>
+								</steps>
+								<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+										disabled="false"
+										id="590db8d5-be9b-496e-9629-c87904e552b8"
+										mask="false"
+										optional="false"
+										fixedValue="true">
+									<from>="Can not verify certificate for: " + node/id</from>
+									<to>message</to>
+								</steps>
+								<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+										disabled="false"
+										id="0137df22-8958-47ad-ba19-d83c9a77a434"
+										mask="false"
+										optional="false"
+										fixedValue="true">
+									<from>nabu.protocols.http.acme</from>
+									<to>type</to>
+								</steps>
+								<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+										disabled="false"
+										id="47794c3f-94d9-4fd9-bd24-17b94d146a18"
+										mask="false"
+										optional="false"
+										fixedValue="true">
+									<from>1</from>
+									<to>code</to>
+								</steps>
+							</steps>
+							<steps xsi:type="be.nabu.libs.services.vm.step.Invoke"
+									disabled="false"
+									id="891db34b-f4e7-48ac-89ba-a952c1c76234"
+									serviceId="nabu.utils.Runtime.summarizeException"
+									resultName="result0b18a9cd1f714e949622f65e9a1c09ec"
+									temporaryMapping="true"
+									x="31"
+									y="35"
+									invocationOrder="0"
+									asynchronous="false">
+								<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+										disabled="false"
+										id="65bc504d-43aa-453b-b4dd-ea0a77b4e777"
+										mask="false"
+										optional="false"
+										fixedValue="false">
+									<from>exception</from>
+									<to>exception</to>
+								</steps>
+							</steps>
+						</steps>
+						<steps xsi:type="be.nabu.libs.services.vm.step.Catch"
+								disabled="false"
+								id="f9e90cee-2bc9-4a0b-a545-9d71202437d9">
+						</steps>
+					</steps>
+				</steps>
+			</steps>
+			<query>nodes</query>
+		</steps>
+		<steps xsi:type="be.nabu.libs.services.vm.step.Sequence"
+				disabled="false"
+				comment="Sleep"
+				id="b20c04bb-cdc3-4f7c-abf8-5e7c31bd4b2b">
+			<steps xsi:type="be.nabu.libs.services.vm.step.Map"
+					disabled="false"
+					comment="Sleep"
+					id="c833cf68-f2ac-44db-9d3e-84fb4ee2a217">
+				<steps xsi:type="be.nabu.libs.services.vm.step.Invoke"
+						disabled="false"
+						id="31d3d105-a1f3-4397-909b-ebb64a989cb2"
+						serviceId="nabu.utils.Server.sleep"
+						resultName="result56c20301fa16483e964ccb668766fb03"
+						temporaryMapping="true"
+						x="47"
+						y="116"
+						invocationOrder="0"
+						asynchronous="false">
+					<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+							disabled="false"
+							id="7ad5fe7b-d070-4dc3-91ea-01befa0ae208"
+							mask="false"
+							optional="false"
+							fixedValue="true">
+						<from>HOURS</from>
+						<to>unit</to>
+					</steps>
+					<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+							disabled="false"
+							id="f3ea858f-5b97-41ae-80da-06d64a910b8b"
+							mask="false"
+							optional="false"
+							fixedValue="true">
+						<from>1</from>
+						<to>amount</to>
+					</steps>
+				</steps>
+			</steps>
+			<steps xsi:type="be.nabu.libs.services.vm.step.Catch"
+					disabled="false"
+					id="f448706e-61dd-4541-904d-a81a02697fde">
+			</steps>
+		</steps>
+		<query>true</query>
+	</steps>
+</sequence>
