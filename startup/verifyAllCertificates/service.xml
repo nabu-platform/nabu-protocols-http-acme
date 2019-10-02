@@ -137,11 +137,20 @@
 						</steps>
 						<steps xsi:type="be.nabu.libs.services.vm.step.Link"
 								disabled="false"
-								id="4f9e30b9-0fdd-4f9d-ac67-c961ab38f310"
+								id="71c3d7b8-9930-4078-8a2a-6038676c169d"
 								mask="false"
 								optional="false"
-								fixedValue="false">
-							<from>isDevelopment</from>
+								fixedValue="true">
+							<from>true</from>
+							<to>persist</to>
+						</steps>
+						<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+								disabled="false"
+								id="715d72f2-a37a-45eb-8e64-d493882302fb"
+								mask="false"
+								optional="false"
+								fixedValue="true">
+							<from>false</from>
 							<to>staging</to>
 						</steps>
 					</steps>
