@@ -3,4 +3,5 @@
     <structure name="output"/>
     <structure definition="nabu.utils.types.NodeDescription" maxOccurs="unbounded" minOccurs="0" name="nodes"/>
     <field name="isDevelopment" type="java.lang.Boolean"/>
+    <structure definition="be.nabu.utils.cep.api.ComplexEvent" name="event"/>
 </structure>
