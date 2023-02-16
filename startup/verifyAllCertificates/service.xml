@@ -1,10 +1,12 @@
 <sequence xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 		disabled="false"
-		id="944d9024-2ab7-44b4-8f27-d19427f88770">
+		id="944d9024-2ab7-44b4-8f27-d19427f88770"
+		lineNumber="1">
 	<steps xsi:type="be.nabu.libs.services.vm.step.Map"
 			comment="Check if development"
 			disabled="false"
-			id="493cff6f-8687-4eed-8e3b-a8f5ae0c8d42">
+			id="493cff6f-8687-4eed-8e3b-a8f5ae0c8d42"
+			lineNumber="2">
 		<steps xsi:type="be.nabu.libs.services.vm.step.Invoke"
 				disabled="false"
 				id="4b04e4f4-a531-4dad-af8a-da40477b684f"
@@ -38,11 +40,13 @@
 	</steps>
 	<steps xsi:type="be.nabu.libs.services.vm.step.For"
 			disabled="false"
-			id="f6e5634e-e3ac-49a2-93ba-21cfc86db40b">
+			id="f6e5634e-e3ac-49a2-93ba-21cfc86db40b"
+			lineNumber="3">
 		<steps xsi:type="be.nabu.libs.services.vm.step.Map"
 				comment="Get all acme artifacts"
 				disabled="false"
-				id="e3766b6c-9f35-437e-b080-13333e22eb9e">
+				id="e3766b6c-9f35-437e-b080-13333e22eb9e"
+				lineNumber="4">
 			<steps xsi:type="be.nabu.libs.services.vm.step.Invoke"
 					disabled="false"
 					id="fab56925-6f21-4e4c-9e4c-057992a36cf0"
@@ -76,7 +80,8 @@
 		</steps>
 		<steps xsi:type="be.nabu.libs.services.vm.step.Map"
 				disabled="false"
-				id="a60ab98a-d064-42ed-9428-93a4c3e84d4a">
+				id="a60ab98a-d064-42ed-9428-93a4c3e84d4a"
+				lineNumber="5">
 			<steps xsi:type="be.nabu.libs.services.vm.step.Invoke"
 					disabled="false"
 					id="5ead9e12-f685-446e-86d5-09a0861ed43b"
@@ -111,14 +116,17 @@
 		<steps xsi:type="be.nabu.libs.services.vm.step.For"
 				disabled="false"
 				id="5839215e-825d-491f-9636-491a3e2eac06"
+				lineNumber="6"
 				variable="node">
 			<steps xsi:type="be.nabu.libs.services.vm.step.Sequence"
 					comment="Try to verify the certificate"
 					disabled="false"
-					id="ad293dda-a341-4eef-8313-455bb76c6bae">
+					id="ad293dda-a341-4eef-8313-455bb76c6bae"
+					lineNumber="7">
 				<steps xsi:type="be.nabu.libs.services.vm.step.Map"
 						disabled="false"
-						id="ceb10e11-1d44-45e6-8552-fb27f0e175e5">
+						id="ceb10e11-1d44-45e6-8552-fb27f0e175e5"
+						lineNumber="8">
 					<steps xsi:type="be.nabu.libs.services.vm.step.Invoke"
 							disabled="false"
 							id="16d6586f-65a3-4d5e-beba-00ef81d50ec7"
@@ -162,97 +170,17 @@
 				<steps xsi:type="be.nabu.libs.services.vm.step.Catch"
 						disabled="false"
 						id="fe3c3a6a-c135-44b6-be52-23ae7975c4f1"
+						lineNumber="9"
 						variable="exception">
 					<steps xsi:type="be.nabu.libs.services.vm.step.Sequence"
 							disabled="false"
-							id="7d017352-aea0-4018-a3f2-51c2cf1ca37c">
-						<steps xsi:type="be.nabu.libs.services.vm.step.Map"
-								comment="Send out notification"
-								disabled="true"
-								id="b4559523-a335-4aae-a7d3-806361178f9c">
-							<steps xsi:type="be.nabu.libs.services.vm.step.Invoke"
-									disabled="false"
-									id="cfed217d-5a31-471e-bc38-7cf435ea878b"
-									serviceId="nabu.frameworks.notifier.Services.notify"
-									resultName="result3454bd8640bd4c2c9aace1b6d1146064"
-									temporaryMapping="true"
-									x="268"
-									y="185"
-									invocationOrder="1"
-									asynchronous="false"
-									recache="false">
-								<steps xsi:type="be.nabu.libs.services.vm.step.Link"
-										disabled="false"
-										id="7dc01d76-0f90-4c08-b7c7-31f93df609bf"
-										mask="false"
-										optional="false"
-										fixedValue="false">
-									<from>result0b18a9cd1f714e949622f65e9a1c09ec/summary</from>
-									<to>properties</to>
-								</steps>
-								<steps xsi:type="be.nabu.libs.services.vm.step.Link"
-										disabled="false"
-										id="28f781b0-c939-4698-976e-37eec41d6d0a"
-										mask="false"
-										optional="false"
-										fixedValue="true">
-									<from>ERROR</from>
-									<to>severity</to>
-								</steps>
-								<steps xsi:type="be.nabu.libs.services.vm.step.Link"
-										disabled="false"
-										id="590db8d5-be9b-496e-9629-c87904e552b8"
-										mask="false"
-										optional="false"
-										fixedValue="true">
-									<from>="Can not verify certificate for: " + node/id</from>
-									<to>message</to>
-								</steps>
-								<steps xsi:type="be.nabu.libs.services.vm.step.Link"
-										disabled="false"
-										id="0137df22-8958-47ad-ba19-d83c9a77a434"
-										mask="false"
-										optional="false"
-										fixedValue="true">
-									<from>nabu.protocols.http.acme</from>
-									<to>type</to>
-								</steps>
-								<steps xsi:type="be.nabu.libs.services.vm.step.Link"
-										disabled="false"
-										id="47794c3f-94d9-4fd9-bd24-17b94d146a18"
-										mask="false"
-										optional="false"
-										fixedValue="true">
-									<from>1</from>
-									<to>code</to>
-								</steps>
-							</steps>
-							<steps xsi:type="be.nabu.libs.services.vm.step.Invoke"
-									disabled="false"
-									id="891db34b-f4e7-48ac-89ba-a952c1c76234"
-									serviceId="nabu.utils.Runtime.summarizeException"
-									resultName="result0b18a9cd1f714e949622f65e9a1c09ec"
-									temporaryMapping="true"
-									x="31"
-									y="35"
-									invocationOrder="0"
-									asynchronous="false"
-									recache="false">
-								<steps xsi:type="be.nabu.libs.services.vm.step.Link"
-										disabled="false"
-										id="65bc504d-43aa-453b-b4dd-ea0a77b4e777"
-										mask="false"
-										optional="false"
-										fixedValue="false">
-									<from>exception</from>
-									<to>exception</to>
-								</steps>
-							</steps>
-						</steps>
+							id="7d017352-aea0-4018-a3f2-51c2cf1ca37c"
+							lineNumber="10">
 						<steps xsi:type="be.nabu.libs.services.vm.step.Map"
 								comment="Map the event"
 								disabled="false"
-								id="2fc18865-e659-4e87-ad5c-b4dffb18c546">
+								id="2fc18865-e659-4e87-ad5c-b4dffb18c546"
+								lineNumber="11">
 							<steps xsi:type="be.nabu.libs.services.vm.step.Link"
 									disabled="false"
 									id="a3b88fbb-03ff-436d-aa94-2d4735005583"
@@ -340,7 +268,8 @@
 						</steps>
 						<steps xsi:type="be.nabu.libs.services.vm.step.Map"
 								disabled="false"
-								id="cb8e2178-28d7-47c9-94fd-cb03a027e5f6">
+								id="cb8e2178-28d7-47c9-94fd-cb03a027e5f6"
+								lineNumber="12">
 							<steps xsi:type="be.nabu.libs.services.vm.step.Invoke"
 									disabled="false"
 									id="f7491ca8-b182-4133-a28f-d9aea6957a2e"
@@ -365,7 +294,8 @@
 						</steps>
 						<steps xsi:type="be.nabu.libs.services.vm.step.Catch"
 								disabled="false"
-								id="f9e90cee-2bc9-4a0b-a545-9d71202437d9">
+								id="f9e90cee-2bc9-4a0b-a545-9d71202437d9"
+								lineNumber="13">
 						</steps>
 					</steps>
 				</steps>
@@ -375,11 +305,13 @@
 		<steps xsi:type="be.nabu.libs.services.vm.step.Sequence"
 				comment="Sleep"
 				disabled="false"
-				id="b20c04bb-cdc3-4f7c-abf8-5e7c31bd4b2b">
+				id="b20c04bb-cdc3-4f7c-abf8-5e7c31bd4b2b"
+				lineNumber="14">
 			<steps xsi:type="be.nabu.libs.services.vm.step.Map"
 					comment="Sleep"
 					disabled="false"
-					id="c833cf68-f2ac-44db-9d3e-84fb4ee2a217">
+					id="c833cf68-f2ac-44db-9d3e-84fb4ee2a217"
+					lineNumber="15">
 				<steps xsi:type="be.nabu.libs.services.vm.step.Invoke"
 						disabled="false"
 						id="31d3d105-a1f3-4397-909b-ebb64a989cb2"
@@ -413,7 +345,8 @@
 			</steps>
 			<steps xsi:type="be.nabu.libs.services.vm.step.Catch"
 					disabled="false"
-					id="f448706e-61dd-4541-904d-a81a02697fde">
+					id="f448706e-61dd-4541-904d-a81a02697fde"
+					lineNumber="16">
 			</steps>
 		</steps>
 		<query>true</query>
