@@ -122,7 +122,8 @@
 					comment="Try to verify the certificate"
 					disabled="false"
 					id="ad293dda-a341-4eef-8313-455bb76c6bae"
-					lineNumber="7">
+					lineNumber="7"
+					scopeDefaultTransaction="true">
 				<steps xsi:type="be.nabu.libs.services.vm.step.Map"
 						disabled="false"
 						id="ceb10e11-1d44-45e6-8552-fb27f0e175e5"
